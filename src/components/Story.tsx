@@ -18,8 +18,9 @@ const Story = (props: StoryProps) => {
 	}
 
 	const getStoryContent = () => {
-		let InnerContent = props.story.content;
+		let InnerContent = props.story?.content;
 		let config = { width, height, loader, header, storyStyles };
+		if (InnerContent)
 		return <InnerContent
 			action={props.action}
 			isPaused={props.playState}
@@ -27,6 +28,7 @@ const Story = (props: StoryProps) => {
 			config={config}
 			messageHandler={rendererMessageHandler}
 		/>
+		else return null
 	};
 
 	return (
