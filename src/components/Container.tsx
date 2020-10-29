@@ -72,8 +72,7 @@ export default function () {
         if (loop) {
             updateNextStoryIdForLoop()
         } else {
-            if (currentId === stories.length - 1)
-              onLastStoryNext()
+            console.log('currentId: ', currentId)
             updateNextStoryId()
         }
     };
@@ -85,6 +84,7 @@ export default function () {
     const updateNextStoryId = () => {
         setCurrentIdWrapper(prev => {
             if (prev < stories.length - 1) return prev + 1
+            if (prev === stories.length - 1) onLastStoryNext()
             return prev
         })
     }
