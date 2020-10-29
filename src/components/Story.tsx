@@ -26,7 +26,7 @@ const Story = (props: StoryProps) => {
 			isPaused={props.playState}
 			story={props.story}
 			config={config}
-			messageHandler={rendererMessageHandler}
+			messageHandler={InnerContent ? rendererMessageHandler : null}
 		/>
 		else return null
 	};
