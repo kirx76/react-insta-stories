@@ -72,18 +72,12 @@ export default function () {
         if (loop) {
             updateNextStoryIdForLoop()
         } else {
-            if (currentId === stories.length - 1) {
+            if (currentId === stories.length - 1)
                 onLastStoryNext()
-                updateNextStoryIdOnEnd()
-            }
             else
                 updateNextStoryId()
         }
     };
-
-    const updateNextStoryIdOnEnd = () => {
-        setCurrentIdWrapper(0)
-    }
 
     const updateNextStoryIdForLoop = () => {
         setCurrentIdWrapper(prev => (prev + 1) % stories.length)
