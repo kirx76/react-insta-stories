@@ -83,6 +83,7 @@ export default function () {
 
     const updateNextStoryId = () => {
         setCurrentIdWrapper(prev => {
+            console.log('prev: ', prev, 'len:', stories.length, 'condition: ', prev === stories.length - 1)
             if (prev < stories.length - 1) return prev + 1
             // if (prev === stories.length - 1) onLastStoryNext()
             return prev
