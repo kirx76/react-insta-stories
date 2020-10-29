@@ -14,7 +14,7 @@ export default function () {
 
     let mousedownId = useRef<any>();
 
-    const { width, height, loop, currentIndex, isPaused, keyboardNavigation } = useContext<GlobalCtx>(GlobalContext);
+    const { width, height, loop, currentIndex, isPaused, keyboardNavigation, onLastStoryNext, onFirstStoryPrev } = useContext<GlobalCtx>(GlobalContext);
     const { stories } = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
@@ -63,6 +63,8 @@ export default function () {
     }
 
     const previous = () => {
+        if (currentId === 0)
+          onFirstStoryPrev()
         setCurrentIdWrapper(prev => prev > 0 ? prev - 1 : prev)
     }
 
@@ -70,6 +72,8 @@ export default function () {
         if (loop) {
             updateNextStoryIdForLoop()
         } else {
+            if (currentId === stories.length - 1)
+              onLastStoryNext()
             updateNextStoryId()
         }
     };
